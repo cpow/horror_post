@@ -1,0 +1,13 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">New Post</h5>
+    </div>
+    <div class="modal-body">
+      <%= form_for Post.new, method: :post do |f| %>
+        <%= f.text_area :content, class: "w-100 py-2 my-2" %>
+        <%= f.submit "Submit", class: "btn btn-large btn-primary", data: { "bs-dismiss": "modal" } %>
+      <% end %>
+    </div>
+  </div>
+</div>

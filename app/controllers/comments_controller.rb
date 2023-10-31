@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
-  before_action :set_post, only: %i[create]
+  before_action :set_post, only: %i[new create]
+
+  def new
+    @comment = @post.comments.new(user_id: current_user.id)
+    render :new, layout: false
+  end
 
   def create
     @comment = @post.comments.new(comment_params.merge(user_id: current_user.id))

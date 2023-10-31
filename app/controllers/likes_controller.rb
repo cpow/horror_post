@@ -7,13 +7,13 @@ class LikesController < ApplicationController
   before_action :set_post
 
   def create
-    @post.likes.create(user_id: current_user.id)
-    redirect_to @post
+    @like = @post.likes.create(user_id: current_user.id)
+    render "posts/unlike", layout: false
   end
 
   def destroy
     @post.likes.find_by(user_id: current_user.id).destroy
-    redirect_to @post
+    render "posts/like", layout: false
   end
 
   private

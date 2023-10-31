@@ -1,0 +1,13 @@
+<div class="modal-dialog modal-dialog-centered">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">New Comment</h5>
+    </div>
+    <div class="modal-body">
+      <%= form_for @comment, url: post_comments_path(@post), method: :post do |f| %>
+        <%= f.text_area :content, class: "w-100 py-2 my-2" %>
+        <%= f.submit "Comment", class: "w-100 btn btn-large btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

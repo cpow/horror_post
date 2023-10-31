@@ -1,0 +1,25 @@
+<div class="d-flex flex-direction-row align-items-center" id="post-<%= post.id %>-likes" >
+  <div class="mx-2">
+    <%= post.likes.count %> likes
+  </div>
+
+  <% if like %>
+    <button
+      hx-delete="<%= post_like_path(post, like) %>"
+      hx-trigger="click"
+      hx-target="#post-<%= post.id %>-likes"
+      hx-swap="outerHTML"
+    >
+      Unlike
+    </button>
+  <% else %>
+    <button
+      hx-post="<%= post_likes_path(post) %>"
+      hx-trigger="click"
+      hx-target="#post-<%= post.id %>-likes"
+      hx-swap="outerHTML"
+    >
+      Like
+    </button>
+  <% end %>
+</div>

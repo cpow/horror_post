@@ -2,12 +2,20 @@
   <h1 class="display-4 fw-bold">HTMX ON RAILS</h1>
   <p class="lead">This is a simple posting application (think twitter, but simpler). built with rails as a backend. and rails + htmx as a frontend.</p>
 
-<%= render 'form' %>
+  <button 
+    hx-get="<%= new_post_path %>" 
+    hx-target="#modals" 
+    hx-trigger="click" 
+    data-bs-toggle="modal" 
+    data-bs-target="#modals"
+    class="btn btn-primary">
+    New Post
+  </button>
 
 </div>
 
 <%= will_paginate @posts %>
 
 <% @posts.each do |post| %>
-  <%= render post %>
+  <%= render partial: "posts/post", locals: { post: post, like: current_user.likes.find_by(post_id: post.id) } %>
 <% end %>

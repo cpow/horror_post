@@ -3,10 +3,22 @@
 <%= link_to "Back to posts", posts_path, class: "btn btn-large btn-primary" %>
 
 <div class="container">
-  <%= render @post %>
+  <%= render partial: "posts/post", locals: { post: @post, like: @like } %>
 </div>
 
 <h2>Comments</h2>
+
+<p>all your lovely words</p>
+
+<button 
+  hx-get="<%= new_post_comment_path(@post) %>"
+  hx-target="#modals" 
+  hx-trigger="click" 
+  data-bs-toggle="modal" 
+  data-bs-target="#modals"
+  class="btn btn-primary">
+  New Comment
+</button>
 
 <% if @post.comments %>
   <ul class="w-100 list-group list-group-flush">
@@ -14,4 +26,3 @@
   </ul>
 <% end %>
 
-<%= render partial: "comments/form", locals: { post: @post } %>
