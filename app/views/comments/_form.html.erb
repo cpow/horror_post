@@ -1,0 +1,6 @@
+<div class="w-100">
+  <%= form_for post.comments.new(user_id: current_user.id), url: post_comments_path(post), method: :post do |f| %>
+    <%= f.text_area :content, class: "w-100 py-2 my-2" %>
+    <%= f.submit "Comment", class: "w-100 btn btn-large btn-primary" %>
+  <% end %>
+</div>

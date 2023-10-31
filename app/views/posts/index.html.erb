@@ -1,0 +1,13 @@
+<div class="text-center">
+  <h1 class="display-4 fw-bold">HTMX ON RAILS</h1>
+  <p class="lead">This is a simple posting application (think twitter, but simpler). built with rails as a backend. and rails + htmx as a frontend.</p>
+
+<%= render 'form' %>
+
+</div>
+
+<%= will_paginate @posts %>
+
+<% @posts.each do |post| %>
+  <%= render post %>
+<% end %>

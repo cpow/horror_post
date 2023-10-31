@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HorrorStack</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <body data-bs-theme="dark">
+      <nav class="navbar mb-2">
+        <div class="container-fluid">
+          <% if logged_in? %>
+            <ul class="nav navbar-right ">
+              <li>
+                <%= link_to "Log out", logout_path, class: "mx-2", data: { "turbo_method": :delete } %>
+              </li> 
+            </ul>
+          <% else %>
+            <ul class="nav navbar-right ">
+              <li><%= link_to "Log in", login_path, class: "mx-2" %></li> 
+              <li><%= link_to "Sign up", new_user_path, class: "mx-2" %></li>
+            </ul>
+          <% end %>
+        </div>
+      </nav>
+      <div class="container">
+        <div class="d-flex align-items-center flex-column justify-content-center">
+          <% flash.each do |message_type, message| %>
+            <div class="alert alert-<%= message_type %>"><%= message %></div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
+    </body>
+</html>

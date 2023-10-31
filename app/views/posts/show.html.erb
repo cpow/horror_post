@@ -1,0 +1,17 @@
+<h1>Viewing this post</h1>
+
+<%= link_to "Back to posts", posts_path, class: "btn btn-large btn-primary" %>
+
+<div class="container">
+  <%= render @post %>
+</div>
+
+<h2>Comments</h2>
+
+<% if @post.comments %>
+  <ul class="w-100 list-group list-group-flush">
+    <%= render @post.comments %>
+  </ul>
+<% end %>
+
+<%= render partial: "comments/form", locals: { post: @post } %>
