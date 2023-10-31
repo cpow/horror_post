@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="display-4 fw-bold">HTMX ON RAILS</h1>
+  <h1 class="display-4 fw-bold">THE HORROR STACK</h1>
   <p class="lead">This is a simple posting application (think twitter, but simpler). built with rails as a backend. and rails + htmx as a frontend.</p>
 
   <button 
@@ -14,7 +14,9 @@
 
 </div>
 
-<%= will_paginate @posts %>
+<div class="digg_pagination my-4">
+  <%= will_paginate @posts %>
+</div>
 
 <% @posts.each do |post| %>
   <%= render partial: "posts/post", locals: { post: post, like: current_user.likes.find_by(post_id: post.id) } %>

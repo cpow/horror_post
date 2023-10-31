@@ -6,8 +6,7 @@
   <%= render partial: "posts/post", locals: { post: @post, like: @like } %>
 </div>
 
-<h2>Comments</h2>
-
+<h1>Comments</h1>
 <p>all your lovely words</p>
 
 <button 
@@ -22,7 +21,7 @@
 
 <% if @post.comments %>
   <ul class="w-100 list-group list-group-flush">
-    <%= render @post.comments %>
+    <%= render @post.comments.order(created_at: :desc) %>
   </ul>
 <% end %>
 
